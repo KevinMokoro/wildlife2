@@ -1,6 +1,7 @@
 package modules;
 
 import java.sql.Timestamp;
+import org.sql2o.*;
 
 public abstract class Animals{
     public String name;
@@ -30,6 +31,16 @@ public abstract class Animals{
             Animals newAnimal = (Animals) otherAnimal;
             return this.getName().equals(newAnimal.getName()) &&
                     this.getSightingId() == newAnimal.getSightingId();
+        }
+    }
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, sightingId) VALUES (:name, :sightingId)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("personId", this.sightingId)
+                    .executeUpdate()
+                    .getKey();
         }
     }
 }

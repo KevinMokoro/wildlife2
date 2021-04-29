@@ -39,4 +39,19 @@ public class AnimalTest {
         Animal otherAnimal = setUpNewAnimal();
         assertTrue(testAnimal.equals(otherAnimal));
     }
+
+    @Test
+    public void save_returnsTrueIfObjectIsSame() {
+        Animal testAnimal = setUpNewAnimal();
+        testAnimal.save();
+        assertTrue(Animal.all().get(0).equals(testAnimal));
+    }
+
+    @Test
+    public void save_assignsIdToAnimal() {
+        Animal testAnimal = setUpNewAnimal();
+        testAnimal.save();
+        Animal savedAnimal = Animal.all().get(0);
+        assertEquals(savedAnimal.getId(), testAnimal.getId());
+    }
 }
