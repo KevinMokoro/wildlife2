@@ -33,4 +33,11 @@ public class SightingTest {
         Sighting otherSighting = setUpNewSighting();
         assertTrue(testSighting.equals(otherSighting));
     }
+
+    @Test
+    public void save_insertsObjectIntoDatabase_Sighting() {
+        Sighting testSighting = setUpNewSighting();
+        testSighting.save();
+        assertTrue(Sighting.all().get(0).equals(testSighting));
+    }
 }
