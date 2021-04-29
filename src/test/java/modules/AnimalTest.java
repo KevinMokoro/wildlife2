@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 //public Animal setUpNewAnimal() {
  //   return new Animal("lion");
- //       }
+ //      }
 
 public class AnimalTest {
     @Test
