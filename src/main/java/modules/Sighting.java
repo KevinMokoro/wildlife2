@@ -1,6 +1,8 @@
 package modules;
 
+import java.util.List;
 import java.util.Objects;
+import org.sql2o.*;
 
 public class Sighting {
     private String location;
@@ -31,5 +33,22 @@ public class Sighting {
     @Override
     public int hashCode() {
         return Objects.hash(location, ranger);
+    }
+
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO sightings (location, ranger) VALUES (:location, :ranger)";
+            con.createQuery(sql)
+                    .addParameter("name", this.location)
+                    .addParameter("email", this.ranger)
+                    .executeUpdate();
+        }
+    }
+    public static List<Sighting> all() {
+        String sql = "SELECT * FROM sightings";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Sighting.class);
+
+        }
     }
 }

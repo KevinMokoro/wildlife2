@@ -1,11 +1,17 @@
 package modules;
 
-import org.junit.Test;
+import org.sql2o.*;
+import org.junit.*;
+import static org.junit.Assert.*;
 
 import static org.junit.Assert.*;
 
 
 public class SightingTest {
+
+    @Rule
+    public DatabaseRule database = new DatabaseRule();
+
     public Sighting setUpNewSighting(){
         return new Sighting("ZoneA","Kevin" );
     }
@@ -39,5 +45,15 @@ public class SightingTest {
         Sighting testSighting = setUpNewSighting();
         testSighting.save();
         assertTrue(Sighting.all().get(0).equals(testSighting));
+    }
+
+    @Test
+    public void all_returnsAllInstancesOfSighting_true() {
+        Sighting testSighting = setUpNewSighting();
+        testSighting.save();
+        Sighting otherSighting = new Sighting("","");
+        otherSighting.save();
+        assertEquals(true,Sighting.all().get(0).equals(testSighting));
+        assertEquals(true,Sighting.all().get(1).equals(otherSighting));
     }
 }
