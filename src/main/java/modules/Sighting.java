@@ -7,6 +7,7 @@ import org.sql2o.*;
 public class Sighting {
     private String location;
     private String ranger;
+    private int id;
 
     public Sighting(String location,String ranger) {
        this.location = location;
@@ -19,6 +20,10 @@ public class Sighting {
 
     public String getRanger() {
         return ranger;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -38,10 +43,12 @@ public class Sighting {
     public void save() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO sightings (location, ranger) VALUES (:location, :ranger)";
-            con.createQuery(sql)
-                    .addParameter("name", this.location)
-                    .addParameter("email", this.ranger)
-                    .executeUpdate();
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("location", this.location)
+                    .addParameter("ranger", this.ranger)
+                    .executeUpdate()
+                    .getKey();
+
         }
     }
     public static List<Sighting> all() {
@@ -51,4 +58,16 @@ public class Sighting {
 
         }
     }
+    public static Sighting find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings WHERE id=:id";
+            Sighting sighting = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Sighting.class);
+            return sighting;
+
+        }
+    }
+
+
 }

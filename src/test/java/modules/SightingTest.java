@@ -56,4 +56,21 @@ public class SightingTest {
         assertEquals(true,Sighting.all().get(0).equals(testSighting));
         assertEquals(true,Sighting.all().get(1).equals(otherSighting));
     }
+
+    @Test
+    public void save_assignsIdToObject() {
+        Sighting testSighting = setUpNewSighting();
+        testSighting.save();
+        Sighting savedSighting = Sighting.all().get(0);
+        assertEquals(testSighting.getId(),savedSighting.getId());
+    }
+
+    @Test
+    public void find_returnsSightingWithSameId_otherSighting() {
+        Sighting testSighting = setUpNewSighting();
+        testSighting.save();
+        Sighting otherSighting = new Sighting("","");
+        otherSighting.save();
+        assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
+    }
 }
