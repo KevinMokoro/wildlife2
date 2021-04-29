@@ -32,4 +32,11 @@ public class AnimalTest {
         Animal testAnimal = setUpNewAnimal();
         assertEquals(1,testAnimal.getSightingId());
     }
+
+    @Test
+    public void equals_returnsTrueIfNameAndSightingIdAreSame_true() {
+        Animal testAnimal = setUpNewAnimal();
+        Animal otherAnimal = setUpNewAnimal();
+        assertTrue(testAnimal.equals(otherAnimal));
+    }
 }

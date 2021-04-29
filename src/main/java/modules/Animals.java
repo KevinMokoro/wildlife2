@@ -22,4 +22,14 @@ public abstract class Animals{
     public Timestamp getCreatedAt(){
         return createdAt;
     }
+    @Override
+    public boolean equals(Object otherAnimal){
+        if (!(otherAnimal instanceof Animals)) {
+            return false;
+        } else {
+            Animals newAnimal = (Animals) otherAnimal;
+            return this.getName().equals(newAnimal.getName()) &&
+                    this.getSightingId() == newAnimal.getSightingId();
+        }
+    }
 }
