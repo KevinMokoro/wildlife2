@@ -3,6 +3,7 @@ package modules;
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -72,5 +73,18 @@ public class SightingTest {
         Sighting otherSighting = new Sighting("","");
         otherSighting.save();
         assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
+    }
+
+    @Test
+    public void getAnimals_getsAllAnimalsBelongingToSightin_animalsList(){
+        Sighting testSighting = setUpNewSighting();
+        testSighting.save();
+        Animal firstAnimal = new Animal("Lion",testSighting.getId());
+        firstAnimal.save();
+        Animal secondAnimal = new Animal("zebra",testSighting.getId());
+        secondAnimal.save();
+        Animals[] animals = new Animals[] {firstAnimal, secondAnimal};
+   //     assertTrue(testSighting.getAnimals().contains(Arrays.asList(animals)));
+
     }
 }

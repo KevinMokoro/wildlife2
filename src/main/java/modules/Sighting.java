@@ -1,5 +1,6 @@
 package modules;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.sql2o.*;
@@ -68,6 +69,15 @@ public class Sighting {
 
         }
     }
+  //  public List<Object> getAnimals() {
+   //     List<Object> allAnimals = new ArrayList<Object>();
+    //    try(Connection con = DB.sql2o.open()) {
+    //        String sql = "SELECT * FROM animals where sightingId=:id";
+     //       return con.createQuery(sql)
+      //              .addParameter("id", this.id)
+       //             .executeAndFetch(Animal.class);
+     //   }
+  //  }
 
 
 }
