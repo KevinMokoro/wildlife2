@@ -38,9 +38,11 @@ public abstract class Animals{
             String sql = "INSERT INTO animals (name, sightingId) VALUES (:name, :sightingId)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
-                    .addParameter("personId", this.sightingId)
+                    .addParameter("sightingId", this.sightingId)
                     .executeUpdate()
                     .getKey();
         }
     }
+
+
 }
