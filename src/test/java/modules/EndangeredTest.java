@@ -1,5 +1,9 @@
 package modules;
 import org.junit.*;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 public class EndangeredTest {
@@ -20,7 +24,7 @@ public class EndangeredTest {
     @Test
     public void getName_instantiatesWithName_String() {
         Endangered testEndangered = setUpNewEndangered();
-        assertEquals("lion", testEndangered.getName());
+        assertEquals("rhino", testEndangered.getName());
     }
 
     @Test
@@ -87,6 +91,15 @@ public class EndangeredTest {
         firstEndangered.save();
         Endangered savedEndangered = Endangered.find(firstEndangered.getId());
         assertEquals(savedEndangered.getSightingId(), fistSighting.getId());
+    }
+
+    @Test
+    public void save_recordsTimeOfCreationInDatabase() {
+        Endangered testEndangered = setUpNewEndangered();
+        testEndangered.save();
+        Timestamp savedEndangeredCreatedAt = Endangered.find(testEndangered.getId()).getCreatedAt();
+        Timestamp rightNow = new Timestamp(new Date().getTime());
+        assertEquals(rightNow.getDay(), savedEndangeredCreatedAt.getDay());
     }
 
 

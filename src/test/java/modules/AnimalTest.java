@@ -1,6 +1,7 @@
 package modules;
 
-
+import java.sql.Timestamp;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 import org.junit.*;
@@ -92,6 +93,15 @@ public class AnimalTest {
         firstAnimal.save();
         Animal savedAnimal = Animal.find(firstAnimal.getId());
         assertEquals(savedAnimal.getSightingId(), fistSighting.getId());
+    }
+
+    @Test
+    public void save_recordsTimeOfCreationInDatabase() {
+        Animal testAnimal = setUpNewAnimal();
+        testAnimal.save();
+        Timestamp savedAnimalCreatedAt = Animal.find(testAnimal.getId()).getCreatedAt();
+        Timestamp rightNow = new Timestamp(new Date().getTime());
+        assertEquals(rightNow.getDay(), savedAnimalCreatedAt.getDay());
     }
 
 }

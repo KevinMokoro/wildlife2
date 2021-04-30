@@ -7,6 +7,7 @@ import java.util.List;
 public class Endangered extends Animals {
     private String health;
     private String age;
+    private String endangered;
 
     public static final String HEALTH_ILL = "ill";
     public static final String HEALTHY_HEALTHY = "healthy";
@@ -26,6 +27,11 @@ public class Endangered extends Animals {
 
 
     }
+
+    public String getEndangered() {
+        return endangered;
+    }
+
     public static List<Endangered> all() {
         String sql = "SELECT * FROM animals";
         try(Connection con = DB.sql2o.open()) {

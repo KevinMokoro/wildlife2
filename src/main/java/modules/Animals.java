@@ -23,6 +23,8 @@ public abstract class Animals{
     public Timestamp getCreatedAt(){
         return createdAt;
     }
+
+
     @Override
     public boolean equals(Object otherAnimal){
         if (!(otherAnimal instanceof Animals)) {
@@ -35,7 +37,7 @@ public abstract class Animals{
     }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name, sightingId) VALUES (:name, :sightingId)";
+            String sql = "INSERT INTO animals (name, sightingId, createdAt) VALUES (:name, :sightingId, now())";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
                     .addParameter("sightingId", this.sightingId)
