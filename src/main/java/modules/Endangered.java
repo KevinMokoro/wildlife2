@@ -17,12 +17,13 @@ public class Endangered extends Animals {
     public static final String AGE_YOUNG = "young";
     public static final String AGE_ADULT = "adult";
 
+    public static final String DATABASE_TYPE = "endangered";
+
     public Endangered(String name,int sightingId) {
         this.name = name;
         this.sightingId = sightingId;
-      //  this.health = health;
-       // this.age = age;
 
+        type = DATABASE_TYPE;
 
 
 

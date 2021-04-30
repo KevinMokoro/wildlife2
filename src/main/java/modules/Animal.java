@@ -5,10 +5,12 @@ import org.sql2o.*;
 
 
 public class Animal extends Animals {
+    public static final String DATABASE_TYPE = "animal";
 
     public Animal(String name,int sightingId) {
         this.name = name;
         this.sightingId = sightingId;
+        type = DATABASE_TYPE;
 
     }
     public static List<Animal> all() {
