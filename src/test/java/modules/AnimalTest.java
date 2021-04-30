@@ -73,4 +73,18 @@ public class AnimalTest {
         secondAnimal.save();
         assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
     }
+
+    @Test
+    public void save_savesSightingIdIntoDB_true() {
+        Sighting testSighting = new Sighting("","");
+        testSighting.save();
+        Animal testAnimal = new Animal("lion", testSighting.getId());
+        testAnimal.save();
+        Animal savedAnimal = Animal.find(testAnimal.getId());
+        assertEquals(savedAnimal.getSightingId(), testSighting.getId());
+    }
+
+
+
+
 }
