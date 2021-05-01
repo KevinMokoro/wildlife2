@@ -22,6 +22,12 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/sightings/new",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("sightings", Sighting.all());
+            return new ModelAndView(model, "sighting-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 
 }
