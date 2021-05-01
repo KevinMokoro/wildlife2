@@ -28,6 +28,16 @@ public class App {
             return new ModelAndView(model, "sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/sightings", (req, res) -> { //new
+            Map<String, Object> model = new HashMap<>();
+            String location = req.queryParams("location");
+            String ranger = req.queryParams("ranger");
+            Sighting newSighting = new Sighting(location,ranger);
+            newSighting.save();
+            res.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
     }
 
 }
