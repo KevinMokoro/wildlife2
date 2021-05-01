@@ -3,9 +3,16 @@
     <p>Sightings in this Area:</p>
     <ul>
         {{#each animals}}
+            {{#if endangered}}
             <li>
-                <p><a href="/sightings/{{sighting.id}}/animals/{{id}}">{{name}}</a></p>
+                <p><a href="/sightings/{{sighting.id}}/endangered/{{id}}">{{name}}</a></p>
             </li>
+            {{else}}
+                <li>
+                    <p><a href="/sightings/{{sighting.id}}/animal/{{id}}">{{name}}</a></p>
+                </li>
+
+            {{/if}}
         {{/each}}
     </ul>
     <a href="/sightings/{{sighting.id}}/edit">Edit</a><br>

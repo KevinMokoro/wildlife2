@@ -61,7 +61,7 @@ public class App {
             return new ModelAndView(model, "animal-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("/animals/new", (request, response)->{
+        post("/animals", (request, response)->{
             Map<String, Object> model = new HashMap<>();
             model.put("sightings",Sighting.all());
 
@@ -81,6 +81,27 @@ public class App {
             response.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
+
+        get("/sightings/:sighting_id/endangered/:animal_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Endangered animal = Endangered.find(Integer.parseInt(req.params("id")));
+            Sighting sighting = Sighting.find(Integer.parseInt(req.params("id")));
+            model.put("sighting", sighting);
+            model.put("animal", animal);
+            model.put("sightings", Sighting.all());
+            return new ModelAndView(model, "animal-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/sightings/:sighting_id/animal/:animal_id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Animal animal = Animal.find(Integer.parseInt(req.params("id")));
+            Sighting sighting = Sighting.find(Integer.parseInt(req.params("id")));
+            model.put("sighting", sighting);
+            model.put("animal", animal);
+            model.put("sightings", Sighting.all());
+            return new ModelAndView(model, "animal-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
 
 

@@ -1,0 +1,25 @@
+{{#partial "content"}}
+    {{#if endangered}}
+        <p>Name: {{endangered.name}}</p>
+        <p>Health: {{endangered.health}}</p>
+        <p>Age: {{endangered.age}}</p>
+        <p>Time Sighted: {{endangered.createdAt}}</p>
+        <p>Sighted At: {{sighting.location}}</p>
+        <p>Ranger: {{sighting.ranger}}</p>
+    {{else}}
+
+    <p>Name: {{ animal.name }}</p>
+    <P>Time Sighted: {{animal.createdAt}}</P>
+    <p>Sighted At {{ sighting.location }}</p>
+    <p>Ranger: {{sighting.ranger}}</p>
+   {{/if}}
+
+
+    <p>
+        <a href="/tasks/{{task.id}}/edit">Edit this task</a><br>
+        <a href="/categories/{{task.categoryId}}/tasks/{{task.id}}/delete">DELETE this task</a>
+    </p>
+
+{{/partial}}
+
+{{> layout.hbs}}
