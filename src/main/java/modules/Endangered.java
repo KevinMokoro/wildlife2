@@ -7,7 +7,7 @@ import java.util.List;
 public class Endangered extends Animals {
     private String health;
     private String age;
-    private String endangered;
+
 
     public static final String HEALTH_ILL = "ill";
     public static final String HEALTHY_HEALTHY = "healthy";
@@ -19,9 +19,11 @@ public class Endangered extends Animals {
 
     public static final String DATABASE_TYPE = "endangered";
 
-    public Endangered(String name,int sightingId) {
+    public Endangered(String name,int sightingId,String health,String age) {
         this.name = name;
         this.sightingId = sightingId;
+        this.health = health;
+        this.age = age;
 
         type = DATABASE_TYPE;
 
@@ -29,9 +31,7 @@ public class Endangered extends Animals {
 
     }
 
-    public String getEndangered() {
-        return endangered;
-    }
+
 
     public static List<Endangered> all() {
         String sql = "SELECT * FROM animals";
@@ -49,11 +49,11 @@ public class Endangered extends Animals {
         }
     }
 
-   // public String getHealth() {
-    //    return health;
-  //  }
+    public String getHealth() {
+        return health;
+    }
 
-  //  public String getAge() {
-  //      return age;
-  //  }
+    public String getAge() {
+        return age;
+    }
 }
