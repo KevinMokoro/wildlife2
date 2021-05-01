@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import org.sql2o.*;
 
-public class Sighting {
+public class  Sighting implements DatabaseManagement {
     private String location;
     private String ranger;
     private int id;
@@ -41,6 +41,7 @@ public class Sighting {
         return Objects.hash(location, ranger);
     }
 
+    @Override
     public void save() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO sightings (location, ranger) VALUES (:location, :ranger)";
@@ -88,6 +89,16 @@ public class Sighting {
             allAnimals.addAll(endangered);
         }
         return allAnimals;
+    }
+
+    @Override
+    public void delete() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "DELETE FROM sightings WHERE id = :id;";
+            con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeUpdate();
+        }
     }
 
 

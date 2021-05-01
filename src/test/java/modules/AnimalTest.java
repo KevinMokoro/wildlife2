@@ -104,4 +104,5 @@ public class AnimalTest {
         assertEquals(rightNow.getDay(), savedAnimalCreatedAt.getDay());
     }
 
+
 }
