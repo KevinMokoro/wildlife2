@@ -82,24 +82,26 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-        get("/sightings/:sighting_id/endangered/:animal_id", (req, res) -> {
+        get("/sightings/:sighting_id/animals/:animal_id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            Endangered animal = Endangered.find(Integer.parseInt(req.params("id")));
-            Sighting sighting = Sighting.find(Integer.parseInt(req.params("id")));
+           // Endangered endangeredAnimal = Endangered.find(Integer.parseInt(req.params("animal_id")));
+            Animal animal = Animal.find(Integer.parseInt(req.params("animal_id")));
+            Sighting sighting = Sighting.find(Integer.parseInt(req.params("sighting_id")));
             model.put("sighting", sighting);
+           // model.put("endangeredAnimal", endangeredAnimal);
             model.put("animal", animal);
             model.put("sightings", Sighting.all());
-            return new ModelAndView(model, "animal-detail.hbs");
+            return new ModelAndView(model, "animal-details.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/sightings/:sighting_id/animal/:animal_id", (req, res) -> {
+       get("/sightings/:sighting_id/animals/:endangered_id", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            Animal animal = Animal.find(Integer.parseInt(req.params("id")));
-            Sighting sighting = Sighting.find(Integer.parseInt(req.params("id")));
+            Endangered endangered = Endangered.find(Integer.parseInt(req.params("endangered_id")));
+            Sighting sighting = Sighting.find(Integer.parseInt(req.params("sighting_id")));
             model.put("sighting", sighting);
-            model.put("animal", animal);
+            model.put("endangered", endangered);
             model.put("sightings", Sighting.all());
-            return new ModelAndView(model, "animal-detail.hbs");
+            return new ModelAndView(model, "animal-details.hbs");
         }, new HandlebarsTemplateEngine());
 
 
