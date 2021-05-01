@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import modules.Animal;
@@ -37,6 +38,18 @@ public class App {
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
+
+        get("/sightings/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Sighting sighting = Sighting.find(Integer.parseInt(req.params("id")));
+            model.put("sighting", sighting);
+            List<Object> allAnimalsBySighting = sighting.getAnimals();
+            model.put("animals", allAnimalsBySighting);
+            model.put("sightings", Sighting.all());
+            return new ModelAndView(model, "sighting-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
 
     }
 
