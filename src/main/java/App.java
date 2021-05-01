@@ -54,12 +54,34 @@ public class App {
             model.put("HEALTH_HEALTHY", Endangered.HEALTH_HEALTHY);
             model.put("HEALTH_OK", Endangered.HEALTH_OK);
             model.put("HEALTH_ILL", Endangered.HEALTH_ILL);
-            model.put("AGE_BABBY", Endangered.AGE_BABY);
+            model.put("AGE_BABY", Endangered.AGE_BABY);
             model.put("AGE_YOUNG", Endangered.AGE_YOUNG);
             model.put("AGE_ADULT", Endangered.AGE_ADULT);
             model.put("sightings", Sighting.all());
             return new ModelAndView(model, "animal-form.hbs");
         }, new HandlebarsTemplateEngine());
+
+        post("/animals/new", (request, response)->{
+            Map<String, Object> model = new HashMap<>();
+            model.put("sightings",Sighting.all());
+
+            String name = request.queryParams("name");
+            int sightingId = Integer.parseInt(request.queryParams("sightingId"));
+
+            boolean endangered = request.queryParamsValues("endangered")!=null;
+            if(endangered) {
+                String health = request.queryParams("health");
+                String age = request.queryParams("age");
+                Endangered endangeredAnimal = new Endangered(name,sightingId,health, age);
+                endangeredAnimal.save();
+            } else{
+                Animal generalAnimal = new Animal(name,sightingId);
+                generalAnimal.save();
+            }
+            response.redirect("/");
+            return null;
+        }, new HandlebarsTemplateEngine());
+
 
 
 
