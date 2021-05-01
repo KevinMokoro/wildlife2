@@ -9,6 +9,9 @@ public abstract class Animals{
     public int sightingId;
     public Timestamp createdAt;
     public String type;
+    public String health;
+    public String age;
+
 
     public String getName() {
         return name;
@@ -24,6 +27,14 @@ public abstract class Animals{
         return createdAt;
     }
 
+    public String getHealth() {
+        return health;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
 
     @Override
     public boolean equals(Object otherAnimal){
@@ -37,10 +48,13 @@ public abstract class Animals{
     }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name, sightingId, createdAt) VALUES (:name, :sightingId, now())";
+            String sql = "INSERT INTO animals (name, sightingId, createdAt, type, health, age) VALUES (:name, :sightingId, now(), :type, :health, :age)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
                     .addParameter("sightingId", this.sightingId)
+                    .addParameter("type",this.type)
+                    .addParameter("health", this.health)
+                    .addParameter("age",this.age)
                     .executeUpdate()
                     .getKey();
         }

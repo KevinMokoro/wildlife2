@@ -84,7 +84,7 @@ public class SightingTest {
         Animal secondAnimal = new Animal("zebra",testSighting.getId());
         secondAnimal.save();
         Animals[] animals = new Animals[] {firstAnimal, secondAnimal};
-   //     assertTrue(testSighting.getAnimals().contains(Arrays.asList(animals)));
+        assertTrue(testSighting.getAnimals().contains(Arrays.asList(animals)));
 
     }
 }
