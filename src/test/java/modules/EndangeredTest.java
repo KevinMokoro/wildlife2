@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class EndangeredTest {
 
     public Endangered setUpNewEndangered() {
-        return new Endangered("rhino",1);
+        return new Endangered("rhino",1,"ill","young");
     }
 
     @Rule
@@ -32,6 +32,20 @@ public class EndangeredTest {
         Endangered testEndangered = setUpNewEndangered();
         assertEquals(1,testEndangered.getSightingId());
     }
+
+    @Test
+    public void getHealth_instantiatesWithHealth_String() {
+        Endangered testEndangered = setUpNewEndangered();
+        assertEquals("ill", testEndangered.getHealth());
+    }
+
+    @Test
+    public void getAge_instantiatesWithAge_String() {
+        Endangered testEndangered = setUpNewEndangered();
+        assertEquals("young", testEndangered.getAge());
+    }
+
+
 
     @Test
     public void equals_returnsTrueIfNameAndSightingIdAreSame_true() {
@@ -59,7 +73,7 @@ public class EndangeredTest {
     public void all_returnsAllInstancesOfEndangered_true() {
         Endangered testEndangered = setUpNewEndangered();
         testEndangered.save();
-        Endangered otherEndangered = new Endangered("",1);
+        Endangered otherEndangered = new Endangered("",1,"","");
         otherEndangered.save();
         assertEquals(true,Endangered.all().get(0).equals(testEndangered));
         assertEquals(true,Endangered.all().get(1).equals(otherEndangered));
@@ -69,7 +83,7 @@ public class EndangeredTest {
     public void find_returnsEndangeredWithSameId_otherEndangered() {
         Endangered firstEndangered =setUpNewEndangered();
         firstEndangered.save();
-        Endangered secondEndangered = new Endangered("", 3);
+        Endangered secondEndangered = new Endangered("", 3,"","");
         secondEndangered.save();
         assertEquals(Endangered.find(secondEndangered.getId()), secondEndangered);
     }
@@ -77,7 +91,7 @@ public class EndangeredTest {
     public void save_savesSightingIdIntoDB_true() {
         Sighting testSighting = new Sighting("","");
         testSighting.save();
-        Endangered testEndangered = new Endangered("lion", testSighting.getId());
+        Endangered testEndangered = new Endangered("lion", testSighting.getId(),"","");
         testEndangered.save();
         Endangered savedEndangered = Endangered.find(testEndangered.getId());
         assertEquals(savedEndangered.getSightingId(), testSighting.getId());
@@ -87,7 +101,7 @@ public class EndangeredTest {
     public void save_savesSightingIntoDB_true() {
         Sighting fistSighting = new Sighting("ZoneA","Kevin");
         fistSighting.save();
-        Endangered firstEndangered = new Endangered("lion",fistSighting.getId());
+        Endangered firstEndangered = new Endangered("lion",fistSighting.getId(),"","");
         firstEndangered.save();
         Endangered savedEndangered = Endangered.find(firstEndangered.getId());
         assertEquals(savedEndangered.getSightingId(), fistSighting.getId());
