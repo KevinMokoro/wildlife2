@@ -10,8 +10,8 @@ public class Endangered extends Animals implements DatabaseManagement{
 
 
     public static final String HEALTH_ILL = "ill";
-    public static final String HEALTHY_HEALTHY = "healthy";
-    public static final String HEALTHY_OK = "ok";
+    public static final String HEALTH_HEALTHY = "healthy";
+    public static final String HEALTH_OK = "ok";
 
     public static final String AGE_BABY = "newborn";
     public static final String AGE_YOUNG = "young";

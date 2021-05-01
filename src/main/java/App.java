@@ -49,6 +49,21 @@ public class App {
             return new ModelAndView(model, "sighting-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/animals/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("HEALTH_HEALTHY", Endangered.HEALTH_HEALTHY);
+            model.put("HEALTH_OK", Endangered.HEALTH_OK);
+            model.put("HEALTH_ILL", Endangered.HEALTH_ILL);
+            model.put("AGE_BABBY", Endangered.AGE_BABY);
+            model.put("AGE_YOUNG", Endangered.AGE_YOUNG);
+            model.put("AGE_ADULT", Endangered.AGE_ADULT);
+            model.put("sightings", Sighting.all());
+            return new ModelAndView(model, "animal-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+
+
 
 
     }
