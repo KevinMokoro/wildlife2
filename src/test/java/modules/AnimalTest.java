@@ -104,5 +104,11 @@ public class AnimalTest {
         assertEquals(rightNow.getDay(), savedAnimalCreatedAt.getDay());
     }
 
-
+    @Test
+    public void delete_deletesAnimalFromDatabase_true() {
+        Animal testAnimal = setUpNewAnimal();
+        testAnimal.save();
+        testAnimal.delete();
+        assertEquals(null, Animal.find(testAnimal.getId()));
+    }
 }

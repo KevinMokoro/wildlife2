@@ -4,7 +4,7 @@ import java.util.List;
 import org.sql2o.*;
 
 
-public class Animal extends Animals {
+public class Animal extends Animals implements DatabaseManagement {
     public static final String DATABASE_TYPE = "animal";
 
     public Animal(String name,int sightingId) {

@@ -115,6 +115,14 @@ public class EndangeredTest {
         Timestamp rightNow = new Timestamp(new Date().getTime());
         assertEquals(rightNow.getDay(), savedEndangeredCreatedAt.getDay());
     }
+    @Test
+    public void delete_deletesWaterMonster_true() {
+        Endangered testEndangered = setUpNewEndangered();
+        testEndangered.save();
+        testEndangered.delete();
+        assertEquals(null, Endangered.find(testEndangered.getId()));
+    }
+
 
 
 }
