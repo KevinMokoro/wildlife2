@@ -69,15 +69,26 @@ public class Sighting {
 
         }
     }
-  //  public List<Object> getAnimals() {
-   //     List<Object> allAnimals = new ArrayList<Object>();
-    //    try(Connection con = DB.sql2o.open()) {
-    //        String sql = "SELECT * FROM animals where sightingId=:id";
-     //       return con.createQuery(sql)
-      //              .addParameter("id", this.id)
-       //             .executeAndFetch(Animal.class);
-     //   }
-  //  }
+    public List<Object> getAnimals() {
+        List<Object> allAnimals = new ArrayList<Object>();
+
+        try(Connection con = DB.sql2o.open()) {
+            String sqlAnimal = "SELECT * FROM animals WHERE sightingId=:id AND type='animal';";
+            List<Animal> animal = con.createQuery(sqlAnimal)
+                    .addParameter("id",this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Animal.class);
+            allAnimals.addAll(animal);
+
+            String sqlEndangered = "SELECT * FROM animals WHERE sightingId=:id AND type='endangered';";
+            List<Endangered> endangered = con.createQuery(sqlEndangered)
+                    .addParameter("id", this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Endangered.class);
+            allAnimals.addAll(endangered);
+        }
+        return allAnimals;
+    }
 
 
 }

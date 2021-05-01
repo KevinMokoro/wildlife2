@@ -5,8 +5,8 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class Endangered extends Animals {
-  //  private String health;
-  //  private String age;
+    private String health;
+    private String age;
 
 
     public static final String HEALTH_ILL = "ill";
@@ -34,7 +34,9 @@ public class Endangered extends Animals {
     public static List<Endangered> all() {
         String sql = "SELECT * FROM animals WHERE type='endangered' ";
         try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(Endangered.class);
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Endangered.class);
         }
     }
     public static Endangered find(int id) {
@@ -42,16 +44,17 @@ public class Endangered extends Animals {
             String sql = "SELECT * FROM animals where id=:id";
             Endangered endangered= con.createQuery(sql)
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
                     .executeAndFetchFirst(Endangered.class);
             return endangered;
         }
     }
 
-  //  public String getHealth() {
-  //      return health;
-  //  }
+    public String getHealth() {
+        return health;
+    }
 
-  //  public String getAge() {
-   //     return age;
-   // }
+    public String getAge() {
+        return age;
+    }
 }

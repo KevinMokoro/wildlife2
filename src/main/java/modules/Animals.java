@@ -9,8 +9,6 @@ public abstract class Animals{
     public int sightingId;
     public Timestamp createdAt;
     public String type;
-    public String health;
-    public String age;
 
 
     public String getName() {
@@ -27,13 +25,6 @@ public abstract class Animals{
         return createdAt;
     }
 
-    public String getHealth() {
-        return health;
-    }
-
-    public String getAge() {
-        return age;
-    }
 
 
     @Override
@@ -48,13 +39,11 @@ public abstract class Animals{
     }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name, sightingId, createdAt, type, health, age) VALUES (:name, :sightingId, now(), :type, :health, :age)";
+            String sql = "INSERT INTO animals (name, sightingId, createdAt, type) VALUES (:name, :sightingId, now(), :type)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
                     .addParameter("sightingId", this.sightingId)
                     .addParameter("type",this.type)
-                    .addParameter("health", this.health)
-                    .addParameter("age",this.age)
                     .executeUpdate()
                     .getKey();
         }

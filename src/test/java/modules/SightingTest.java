@@ -76,15 +76,15 @@ public class SightingTest {
     }
 
     @Test
-    public void getAnimals_getsAllAnimalsBelongingToSightin_animalsList(){
+    public void getAnimals_getsAllAnimalsBelongingToSighting_animalsList(){
         Sighting testSighting = setUpNewSighting();
         testSighting.save();
         Animal firstAnimal = new Animal("Lion",testSighting.getId());
         firstAnimal.save();
-        Animal secondAnimal = new Animal("zebra",testSighting.getId());
+        Endangered secondAnimal = new Endangered("zebra",testSighting.getId(),"ill","young");
         secondAnimal.save();
-        Animals[] animals = new Animals[] {firstAnimal, secondAnimal};
-        assertTrue(testSighting.getAnimals().contains(Arrays.asList(animals)));
+        Object[] animals = new Object[] {firstAnimal, secondAnimal};
+        assertTrue(testSighting.getAnimals().containsAll(Arrays.asList(animals)));
 
     }
 }
