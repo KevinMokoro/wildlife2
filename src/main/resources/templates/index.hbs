@@ -27,16 +27,17 @@
     <h3> Report  ENDANGERED ANIMAL Sighting </h3>
     {{#if endangered}}
         <form action="/endangered_sighting" method="post">
-        <select name="endangeredAnimal">
-            {{#each endangered}}
+            <label>Select Endangered Animal</label>
+            <select name="endangeredAnimalSelected">
+             {{#each endangered}}
                 <option value="{{id}}">{{name}}</option>
-            {{/each}}
-        </select>
-        <label>Location</label>
-        <input type="text" name="location">
-        <label>Your Name Please</label>
-        <input type="text" name="rangerName">
-        <button type="submit">ADD SIGHTING</button>
+             {{/each}}
+            </select>
+            <label>Location</label>
+            <input type="text" name="location">
+            <label>Your Name Please</label>
+            <input type="text" name="rangerName">
+            <button type="submit">ADD SIGHTING</button>
         </form>
     {{/if}}
 
