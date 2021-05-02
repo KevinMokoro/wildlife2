@@ -7,6 +7,7 @@ import java.util.List;
 public class Endangered extends Animals implements DatabaseManagement{
     private String health;
     private String age;
+    private boolean endangered;
 
 
     public static final String HEALTH_ILL = "ill";
@@ -24,6 +25,7 @@ public class Endangered extends Animals implements DatabaseManagement{
         this.sightingId = sightingId;
         this.health = health;
         this.age = age;
+        endangered = true;
 
         type = DATABASE_TYPE;
 
@@ -48,6 +50,11 @@ public class Endangered extends Animals implements DatabaseManagement{
                     .executeAndFetchFirst(Endangered.class);
             return endangered;
         }
+    }
+
+
+    public boolean isEndangered() {
+        return endangered ;
     }
 
     public String getHealth() {

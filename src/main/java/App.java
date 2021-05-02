@@ -89,6 +89,7 @@ public class App {
             Sighting sighting = Sighting.find(Integer.parseInt(req.params("sighting_id")));
             model.put("sighting", sighting);
            // model.put("endangeredAnimal", endangeredAnimal);
+            model.put("endangered", Endangered.all());
             model.put("animal", animal);
             model.put("sightings", Sighting.all());
             return new ModelAndView(model, "animal-details.hbs");
@@ -103,13 +104,6 @@ public class App {
             model.put("sightings", Sighting.all());
             return new ModelAndView(model, "animal-details.hbs");
         }, new HandlebarsTemplateEngine());
-
-
-
-
-
-
-
 
     }
 

@@ -2,8 +2,10 @@
 
     <form action="/animals" method="post">
         {{#if sightings}}
+            <div class="form-group">
             <label for="name">Animal Name</label>
             <input id="name" name="name" type="text">
+            </div>
 
             <label for="endangered">Is This Animal Endangered</label>
             <input type="checkbox" name="endangered" id="endangered" value="yes">

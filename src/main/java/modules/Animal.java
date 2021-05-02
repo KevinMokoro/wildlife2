@@ -10,6 +10,7 @@ public class Animal extends Animals implements DatabaseManagement {
     public Animal(String name,int sightingId) {
         this.name = name;
         this.sightingId = sightingId;
+      //  endangered = false;
         type = DATABASE_TYPE;
 
     }

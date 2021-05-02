@@ -8,6 +8,7 @@ public abstract class Animals{
     public int id;
     public int sightingId;
     public Timestamp createdAt;
+   // public boolean endangered;
     public String type;
 
 
@@ -25,7 +26,9 @@ public abstract class Animals{
         return createdAt;
     }
 
-
+   // public boolean isEndangered() {
+   //     return endangered;
+   /// }
 
     @Override
     public boolean equals(Object otherAnimal){
