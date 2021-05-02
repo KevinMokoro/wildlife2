@@ -75,18 +75,7 @@ public class SightingTest {
         assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
     }
 
-    @Test
-    public void getAnimals_getsAllAnimalsBelongingToSighting_animalsList(){
-        Sighting testSighting = setUpNewSighting();
-        testSighting.save();
-        Animal firstAnimal = new Animal("Lion",testSighting.getId());
-        firstAnimal.save();
-        Endangered secondAnimal = new Endangered("zebra",testSighting.getId(),"ill","young");
-        secondAnimal.save();
-        Object[] animals = new Object[] {firstAnimal, secondAnimal};
-        assertTrue(testSighting.getAnimals().containsAll(Arrays.asList(animals)));
 
-    }
 
     @Test
     public void delete_deletesSighting_true() {
