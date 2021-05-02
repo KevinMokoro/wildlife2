@@ -60,7 +60,7 @@ public class Endangered extends Animals implements DatabaseManagement{
     }
 
     public static List<Endangered> all() {
-        String sql = "SELECT * FROM endangered_animals;";
+        String sql = "SELECT * FROM endangered_animals";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .throwOnMappingFailure(false)

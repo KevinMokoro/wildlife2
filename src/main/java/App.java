@@ -80,11 +80,11 @@ public class App {
             if(endangered) {
                 String health = request.queryParams("health");
                 String age = request.queryParams("age");
-                Endangered endangeredAnimal = new Endangered(name,sightingId,health, age);
-                endangeredAnimal.save();
+            //    Endangered endangeredAnimal = new Endangered(name,sightingId,health, age);
+          ///      endangeredAnimal.save();
             } else{
-                Animal generalAnimal = new Animal(name,sightingId);
-                generalAnimal.save();
+         //       Animal generalAnimal = new Animal(name,sightingId);
+         //       generalAnimal.save();
             }
             response.redirect("/");
             return null;
