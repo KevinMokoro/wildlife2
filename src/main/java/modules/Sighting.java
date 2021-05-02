@@ -9,10 +9,13 @@ public class  Sighting implements DatabaseManagement {
     private String location;
     private String ranger;
     private int id;
+    private int animal_id;
 
-    public Sighting(String location,String ranger) {
+    public Sighting(String location,String ranger,int animal_id) {
        this.location = location;
        this.ranger = ranger;
+       this.animal_id = animal_id;
+
     }
 
     public String getLocation() {
@@ -25,6 +28,10 @@ public class  Sighting implements DatabaseManagement {
 
     public int getId() {
         return id;
+    }
+
+    public int getAnimal_id() {
+        return animal_id;
     }
 
     @Override
@@ -44,10 +51,11 @@ public class  Sighting implements DatabaseManagement {
     @Override
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sightings (location, ranger) VALUES (:location, :ranger)";
+            String sql = "INSERT INTO sightings (location, ranger,animal_id) VALUES (:location, :ranger, animal_id)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("location", this.location)
                     .addParameter("ranger", this.ranger)
+                    .addParameter("animal_id",this.animal_id)
                     .executeUpdate()
                     .getKey();
 
@@ -56,7 +64,7 @@ public class  Sighting implements DatabaseManagement {
     public static List<Sighting> all() {
         String sql = "SELECT * FROM sightings";
         try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(Sighting.class);
+            return con.createQuery(sql).throwOnMappingFailure(false).executeAndFetch(Sighting.class);
 
         }
     }
@@ -74,14 +82,14 @@ public class  Sighting implements DatabaseManagement {
         List<Object> allAnimals = new ArrayList<Object>();
 
         try(Connection con = DB.sql2o.open()) {
-            String sqlAnimal = "SELECT * FROM animals WHERE sightingId=:id AND type='animal';";
+            String sqlAnimal = "SELECT * FROM animals WHERE sightingId=:id ;";
             List<Animal> animal = con.createQuery(sqlAnimal)
                     .addParameter("id",this.id)
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Animal.class);
             allAnimals.addAll(animal);
 
-            String sqlEndangered = "SELECT * FROM animals WHERE sightingId=:id AND type='endangered';";
+            String sqlEndangered = "SELECT * FROM endangered_animals WHERE sightingId=:id ;";
             List<Endangered> endangered = con.createQuery(sqlEndangered)
                     .addParameter("id", this.id)
                     .throwOnMappingFailure(false)

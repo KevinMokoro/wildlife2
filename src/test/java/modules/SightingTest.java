@@ -14,23 +14,23 @@ public class SightingTest {
     public DatabaseRule database = new DatabaseRule();
 
     public Sighting setUpNewSighting(){
-        return new Sighting("ZoneA","Kevin" );
+        return new Sighting("ZoneA","Kevin",1 );
     }
     @Test
     public void sighting_instantiatesCorrectly_true() {
-        Sighting testSighting = new Sighting("ZoneA","Kevin");
+        Sighting testSighting = new Sighting("ZoneA","Kevin", 1);
     }
 
     @Test
     public void getLocation_sightingInstantiatesWithLocation_ZoneA() {
-        Sighting testSighting = new Sighting("ZoneA","Kevin");
+        Sighting testSighting = new Sighting("ZoneA","Kevin", 1);
         assertEquals("ZoneA", testSighting.getLocation());
 
     }
 
     @Test
     public void getRanger_sightingInstantiatesWithRanger_Kevin() {
-        Sighting testSighting = new Sighting("ZoneA","Kevin");
+        Sighting testSighting = new Sighting("ZoneA","Kevin",1);
         assertEquals("Kevin", testSighting.getRanger());
     }
 
@@ -52,7 +52,7 @@ public class SightingTest {
     public void all_returnsAllInstancesOfSighting_true() {
         Sighting testSighting = setUpNewSighting();
         testSighting.save();
-        Sighting otherSighting = new Sighting("","");
+        Sighting otherSighting = new Sighting("","",1);
         otherSighting.save();
         assertEquals(true,Sighting.all().get(0).equals(testSighting));
         assertEquals(true,Sighting.all().get(1).equals(otherSighting));
@@ -70,7 +70,7 @@ public class SightingTest {
     public void find_returnsSightingWithSameId_otherSighting() {
         Sighting testSighting = setUpNewSighting();
         testSighting.save();
-        Sighting otherSighting = new Sighting("","");
+        Sighting otherSighting = new Sighting("","",1);
         otherSighting.save();
         assertEquals(Sighting.find(otherSighting.getId()), otherSighting);
     }

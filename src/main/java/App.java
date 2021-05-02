@@ -41,7 +41,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             String location = req.queryParams("location");
             String ranger = req.queryParams("ranger");
-            Sighting newSighting = new Sighting(location,ranger);
+            Sighting newSighting = new Sighting(location,ranger,1);
             newSighting.save();
             res.redirect("/");
             return null;
