@@ -1,26 +1,70 @@
 {{#partial "content"}}
-    <div class="index">
-    <h1>Current Activities</h1>
 
+    <h1> REPORT SIGHTING </h1>
 
-    <h2>Endangered Animals</h2>
+    <h4><a href="/animal/new">Add Animal to System</a></h4>
+    <hr>
+
+    <h3> Report Animal NOT ENDANGERED Sighting </h3>
+    {{#if animals}}
+        <form action="/sighting" method="post">
+            <label>SELECT ANIMAL</label>
+            <select name = "animalSelected">
+                {{#each animals}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+            <label>Location</label>
+            <input type="text" name="location">
+            <label>Your Name Please</label>
+            <input type="text" name="rangerName">
+            <button type="submit">ADD SIGHTING</button>
+        </form>
+    {{/if}}
+
+    <hr>
+
+    <h3> Report  ENDANGERED ANIMAL Sighting </h3>
+    {{#if endangered}}
+        <form action="/endangered_sighting" method="post">
+        <select name="endangeredAnimal">
+            {{#each endangered}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <label>Location</label>
+        <input type="text" name="location">
+        <label>Your Name Please</label>
+        <input type="text" name="rangerName">
+        <button type="submit">ADD SIGHTING</button>
+        </form>
+    {{/if}}
+
+<hr>
+
+    <h3>Endangered Animals Sightings</h3>
     {{#if endangered}}
         {{#each endangered}}
-            <p><a href="/sightings/{{sightingId}}/animals/{{id}}">{{name}}</a></p>
-        {{/each}}
+            <a href="/endangered_animal/{{id}}" class="thumbnail">
+                <h4>{{name}}</h4>
+                <h4>{{getSightings.size}} Reported Sightings</h4>
+                    <p>Click for Details</p>
+            </a>
+            {{/each}}
     {{else}}
-        <p>No Endangered Animals</p>
+        <a href="/animal/new">Add Animal to Report a Sighting</a>
     {{/if}}
 
-    <h2>Normal Animals</h2>
+    <h3>All Animals Sightings</h3>
     {{#if animals}}
         {{#each animals}}
-            <p><a href="/sightings/{{sightingId}}/animals/{{id}}">{{name}}</a></p>
+            <a href="/animal/{{id}}" class="thumbnail">
+                <h4>{{name}}</h4>
+                <h4>{{getSightings.size}} Reported Sightings</h4>
+                <p>Click for Details</p>
+            </a>
         {{/each}}
-    {{else}}
-        <p>No Regular Animals</p>
     {{/if}}
-    </div>
 
 {{/partial}}
 
