@@ -1,0 +1,27 @@
+{{#partial "content"}}
+    <div class="index">
+    <h1>Current Activities</h1>
+
+
+    <h2>Endangered Animals</h2>
+    {{#if endangered}}
+        {{#each endangered}}
+            <p><a href="/sightings/{{sightingId}}/animals/{{id}}">{{name}}</a></p>
+        {{/each}}
+    {{else}}
+        <p>No Endangered Animals</p>
+    {{/if}}
+
+    <h2>Normal Animals</h2>
+    {{#if animals}}
+        {{#each animals}}
+            <p><a href="/sightings/{{sightingId}}/animals/{{id}}">{{name}}</a></p>
+        {{/each}}
+    {{else}}
+        <p>No Regular Animals</p>
+    {{/if}}
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}

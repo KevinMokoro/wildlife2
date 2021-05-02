@@ -76,7 +76,7 @@ public class App {
             String name = request.queryParams("name");
             int sightingId = Integer.parseInt(request.queryParams("sightingId"));
 
-            boolean endangered = request.queryParamsValues("endangered")!=null;
+            boolean endangered = request.queryParamsValues("endangered") != null;
             if(endangered) {
                 String health = request.queryParams("health");
                 String age = request.queryParams("age");
@@ -96,22 +96,21 @@ public class App {
             Animal animal = Animal.find(Integer.parseInt(req.params("animal_id")));
             Sighting sighting = Sighting.find(Integer.parseInt(req.params("sighting_id")));
             model.put("sighting", sighting);
-           // model.put("endangeredAnimal", endangeredAnimal);
-            model.put("endangered", Endangered.all());
+           // model.put("endangeredAnimal", endangeredAnimal)
             model.put("animal", animal);
             model.put("sightings", Sighting.all());
             return new ModelAndView(model, "animal-details.hbs");
         }, new HandlebarsTemplateEngine());
 
-       get("/sightings/:sighting_id/animals/:endangered_id", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            Endangered endangered = Endangered.find(Integer.parseInt(req.params("endangered_id")));
-            Sighting sighting = Sighting.find(Integer.parseInt(req.params("sighting_id")));
-            model.put("sighting", sighting);
-            model.put("endangered", endangered);
-            model.put("sightings", Sighting.all());
-            return new ModelAndView(model, "animal-details.hbs");
-        }, new HandlebarsTemplateEngine());
+     //  get("/sightings/:sighting_id/animals/:endangered_id", (req, res) -> {
+      //      Map<String, Object> model = new HashMap<>();
+       //     Endangered endangered = Endangered.find(Integer.parseInt(req.params("endangered_id")));
+       //     Sighting sighting = Sighting.find(Integer.parseInt(req.params("sighting_id")));
+      //      model.put("sighting", sighting);
+      //      model.put("endangered", endangered);
+       //     model.put("sightings", Sighting.all());
+     //       return new ModelAndView(model, "animal-details.hbs");
+      //  }, new HandlebarsTemplateEngine());
 
     }
 

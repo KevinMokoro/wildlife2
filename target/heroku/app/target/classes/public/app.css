@@ -1,0 +1,23 @@
+
+.page-header {
+
+}
+
+.index {
+background-color: black;
+padding: 16px;
+}
+
+.navwild {
+float: right;
+
+}
+
+.navwild a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.dropdown-menu {
+background-color: #229954;
+}

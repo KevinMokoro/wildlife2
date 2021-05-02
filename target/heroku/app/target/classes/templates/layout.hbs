@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}WILDLIFE{{/block}}</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/app.css'>
+</head>
+<body>
+<div class="navwild">
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/animals/new">Add a New Animal</a></li>
+
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            SIGHTINGS <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            {{#if sightings}}
+                {{#each sightings}}
+                    <li><a href="/sightings/{{id}}">{{location}}</a></li>
+                {{/each}}
+                <li><a href="/sightings/new">Add Sighting</a></li>
+
+            {{else}}
+                <li><a href="/sightings/new">Add Sighting</a></li>
+            {{/if}}
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="container">
+
+    <div class="page-header">
+        <h1>Welcome. <small>Take Care Of The Ecosystem.</small></h1>
+    </div>
+
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+
+    </div>
+</div>
+
+
+{{#block "footer"}}
+    <footer class="footer">
+        <div class="container">
+            <hr>
+            <p class="text-muted">
+                <a href="/sightings/delete">delete all sightings and animals</a><br>
+                <a href="/animals/delete">delete all animals</a>
+            </p>
+        </div>
+    </footer>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </html>
+{{/block}}

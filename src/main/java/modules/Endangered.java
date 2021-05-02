@@ -31,6 +31,22 @@ public class Endangered extends Animals implements DatabaseManagement{
 
     }
 
+    @Override
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, sightingId, createdAt, type) VALUES (:name, :sightingId, now(), :type)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("sightingId", this.sightingId)
+                    .addParameter("type",this.type)
+                    .addParameter("health",this.health)
+                    .addParameter("age",this.age)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+
 
 
     public static List<Endangered> all() {

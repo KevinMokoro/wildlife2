@@ -14,6 +14,7 @@ public class DatabaseRule extends ExternalResource {
         try(Connection con = DB.sql2o.open()) {
             String deleteSightingsQuery = "DELETE FROM sightings *;";
             String deleteAnimalsQuery = "DELETE FROM animals*;";
+            String deleteEndangeredAnimalsQuery = "DELETE FROM endangered_animals *;";
             con.createQuery(deleteSightingsQuery).executeUpdate();
             con.createQuery(deleteAnimalsQuery).executeUpdate();
         }

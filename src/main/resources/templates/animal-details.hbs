@@ -1,21 +1,11 @@
 {{#partial "content"}}
 
-    {{#if animal.isEndangered}}
-        <p>ENDANGERED</p>
 
         <p>Name: {{animal.name}}</p>
         <p>Sighted At: {{sighting.location}}</p>
-        <p>Ranger: {{ sighting.ranger }}</p>
+        <p>Ranger: {{sighting.ranger}}</p>
         <p>Time Sighted: {{animal.createdAt}}</p>
-        <h2>HEALTH : {{animal.health}}</h2>
-        <h2>AGE : {{animal.age}}</h2>
-    {{else }}
 
-        <p>Name: {{animal.name}}</p>
-        <p>Sighted At: {{sighting.location}}</p>
-        <p>Ranger: {{ sighting.ranger }}</p>
-        <p>Time Sighted: {{animal.createdAt}}</p>
-  {{/if}}
     <p>
         <a href="/animals/{{animal.id}}/edit">Edit</a><br>
         <a href="/sightings/{{animal.sightingId}}/animals/{{animal.id}}/delete">DELETE</a>
