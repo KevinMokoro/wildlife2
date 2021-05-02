@@ -1,30 +1,60 @@
 package modules;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import org.sql2o.*;
 
 
 public class Animal extends Animals implements DatabaseManagement {
-    public static final String DATABASE_TYPE = "animal";
+
+    private int id;
+
 
     public Animal(String name,int sightingId) {
         this.name = name;
-        this.sightingId = sightingId;
-      //  endangered = false;
-        type = DATABASE_TYPE;
 
     }
+
+
+    @Override
+    public boolean equals(Object otherAnimal) {
+        if(!(otherAnimal instanceof Animal)) {
+            return false;
+        } else {
+            Animal newAnimal = (Animal) otherAnimal;
+            return this.getName().equals(newAnimal.getName());
+        }
+    }
+
+    @Override
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name) VALUES (:name);";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+
     public static List<Animal> all() {
-        String sql = "SELECT * FROM animals WHERE type ='animal' ";
+        String sql = "SELECT * FROM animals;";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Animal.class);
         }
     }
+
     public static Animal find(int id) {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM animals where id=:id";
+            String sql = "SELECT * FROM animals WHERE id=:id;";
             Animal animal= con.createQuery(sql)
                     .addParameter("id", id)
                     .throwOnMappingFailure(false)
@@ -32,6 +62,26 @@ public class Animal extends Animals implements DatabaseManagement {
             return animal;
         }
     }
+
+    public void updateName(String name) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "UPDATE animals SET name=:name WHERE id=:id;";
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .addParameter("name", name)
+                    .executeUpdate();
+        }
+    }
+
+    public void delete() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "DELETE FROM animals WHERE id=:id;";
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
+    }
+
 
 
 
