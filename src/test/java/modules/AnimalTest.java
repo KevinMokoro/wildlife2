@@ -10,7 +10,7 @@ import org.junit.*;
 public class AnimalTest {
 
     public Animal setUpNewAnimal() {
-        return new Animal("lion",1);
+        return new Animal("lion");
     }
 
     @Rule
@@ -28,14 +28,9 @@ public class AnimalTest {
         assertEquals("lion", testAnimal.getName());
     }
 
-    @Test
-    public void getSightingId_instantiatesWithSightingId_int() {
-        Animal testAnimal = setUpNewAnimal();
-        assertEquals(1,testAnimal.getSightingId());
-    }
 
     @Test
-    public void equals_returnsTrueIfNameAndSightingIdAreSame_true() {
+    public void equals_returnsTrueObjectsAreSame_true() {
         Animal testAnimal = setUpNewAnimal();
         Animal otherAnimal = setUpNewAnimal();
         assertTrue(testAnimal.equals(otherAnimal));
@@ -60,7 +55,7 @@ public class AnimalTest {
     public void all_returnsAllInstancesOfAnimal_true() {
         Animal testAnimal = setUpNewAnimal();
         testAnimal.save();
-        Animal otherAnimal = new Animal("",1);
+        Animal otherAnimal = new Animal("");
         otherAnimal.save();
         assertEquals(true,Animal.all().get(0).equals(testAnimal));
         assertEquals(true,Animal.all().get(1).equals(otherAnimal));
@@ -70,30 +65,14 @@ public class AnimalTest {
     public void find_returnsAnimalWithSameId_otherAnimal() {
         Animal firstAnimal =setUpNewAnimal();
         firstAnimal.save();
-        Animal secondAnimal = new Animal("", 3);
+        Animal secondAnimal = new Animal("");
         secondAnimal.save();
         assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
     }
 
-    @Test
-    public void save_savesSightingIdIntoDB_true() {
-        Sighting testSighting = new Sighting("","");
-        testSighting.save();
-        Animal testAnimal = new Animal("lion", testSighting.getId());
-        testAnimal.save();
-        Animal savedAnimal = Animal.find(testAnimal.getId());
-        assertEquals(savedAnimal.getSightingId(), testSighting.getId());
-    }
 
-    @Test
-    public void save_savesSightingIntoDB_true() {
-        Sighting fistSighting = new Sighting("ZoneA","Kevin");
-        fistSighting.save();
-        Animal firstAnimal = new Animal("lion",fistSighting.getId());
-        firstAnimal.save();
-        Animal savedAnimal = Animal.find(firstAnimal.getId());
-        assertEquals(savedAnimal.getSightingId(), fistSighting.getId());
-    }
+
+
 
     @Test
     public void save_recordsTimeOfCreationInDatabase() {

@@ -11,7 +11,7 @@ public class Animal extends Animals implements DatabaseManagement {
     private int id;
 
 
-    public Animal(String name,int sightingId) {
+    public Animal(String name) {
         this.name = name;
 
     }
