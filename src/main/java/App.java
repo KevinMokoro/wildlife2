@@ -39,14 +39,14 @@ public class App {
             Sighting sighting = new Sighting(location,rangerName,animalIdSelected );
             sighting.save();
             model.put("sighting", sighting);
-            model.put("animals", Endangered.all());
+            model.put("endangered", Endangered.all());
             String animal = Endangered.find(animalIdSelected).getName();
             model.put("animal", animal);
             return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
 
         post("/sighting", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+            Map<String, Object> model = new HashMap<>();
             String rangerName = request.queryParams("rangerName");
             int animalIdSelected = Integer.parseInt(request.queryParams("animalSelected"));
             String location = request.queryParams("location");
@@ -58,6 +58,20 @@ public class App {
             model.put("animal", animal);
 
             return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/animal/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("HEALTH_HEALTHY", Endangered.HEALTH_HEALTHY);
+            model.put("HEALTH_OK", Endangered.HEALTH_OK);
+            model.put("HEALTH_ILL", Endangered.HEALTH_ILL);
+            model.put("AGE_BABY", Endangered.AGE_BABY);
+            model.put("AGE_YOUNG", Endangered.AGE_YOUNG);
+            model.put("AGE_ADULT", Endangered.AGE_ADULT);
+            model.put("animals", Animal.all());
+            model.put("endangered", Endangered.all());
+            return new ModelAndView(model, "animal-form.hbs");
         }, new HandlebarsTemplateEngine());
 
 
