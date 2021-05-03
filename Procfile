@@ -1,2 +1,2 @@
 
-web: ./build/install/wildlife-animals/bin/wildlife-moringa
+web: ./build/install/wildlife-animals/bin/wildlife-animals
