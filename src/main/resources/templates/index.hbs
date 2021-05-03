@@ -7,6 +7,7 @@
 
     <h3> Report Animal NOT ENDANGERED Sighting </h3>
     {{#if animals}}
+        <p>IF YOU DON'T SEE THE ANIMAL YOU LOOKING FOR! ADD THE ANIMAL TO THE SYSTEM.</p>
         <form action="/sighting" method="post">
             <label>SELECT ANIMAL</label>
             <select name = "animalSelected">
@@ -14,10 +15,13 @@
                     <option value="{{id}}">{{name}}</option>
                 {{/each}}
             </select>
-            <label>Location</label>
+            <hr>
+            <label>Location Seen</label>
             <input type="text" name="location">
+            <hr>
             <label>Your Name Please</label>
             <input type="text" name="rangerName">
+            <hr>
             <button type="submit">ADD SIGHTING</button>
         </form>
     {{/if}}
@@ -27,16 +31,20 @@
     <h3> Report  ENDANGERED ANIMAL Sighting </h3>
     {{#if endangered}}
         <form action="/endangered_sighting" method="post">
+            <hr>
             <label>Select Endangered Animal</label>
             <select name="endangeredAnimalSelected">
              {{#each endangered}}
                 <option value="{{id}}">{{name}}</option>
              {{/each}}
             </select>
-            <label>Location</label>
+            <hr>
+            <label>Location Seen</label>
             <input type="text" name="location">
+            <hr>
             <label>Your Name Please</label>
             <input type="text" name="rangerName">
+            <hr>
             <button type="submit">ADD SIGHTING</button>
         </form>
     {{/if}}
@@ -61,7 +69,7 @@
         {{#each animals}}
             <a href="/animal/{{id}}" class="thumbnail">
                 <h4>{{name}}</h4>
-                <h4>{{getSightings.size}} Reported Sightings</h4>
+                <h4>{{sightingssize}} Reported Sightings</h4>
                 <p>Click for Details</p>
             </a>
         {{/each}}

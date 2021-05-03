@@ -3,16 +3,13 @@
 
         <p>Name: {{animal.name}}</p>
         {{#if animal.sightings}}
-            {{#each}}
-                <p>Location: {{location}}</p>
-                <p>Ranger Name:{{ranger_name}}</p>
+            {{#each animal.sightings}}
+                <hr>
+                <p>Location Sighted: {{location}}</p>
+                <p>Ranger Name: {{ranger}}</p>
             {{/each}}
         {{/if}}
 
-    <p>
-        <a href="/animals/{{animal.id}}/edit">Edit</a><br>
-        <a href="/sightings/{{animal.sightingId}}/animals/{{animal.id}}/delete">DELETE</a>
-    </p>
 
 {{/partial}}
 

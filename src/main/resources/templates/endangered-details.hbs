@@ -2,12 +2,13 @@
 
     <h1>NAME: {{endangered.name}}</h1>
 
-    {{#if endangered.getSightings}}
-        {{#each}}
-            <p>Location: {{location}}</p>
-            <p>RangerName: {{ranger_name}}</p>
-            <p>Health: {{health}}</p>
-            <p>Age:{{age}}</p>
+    {{#if endangered.sightings}}
+        {{#each endangered.sightings}}
+            <hr>
+            <p>Location Sighted: {{location}}</p>
+            <p>Ranger Name: {{ranger}}</p>
+            <p>Health: {{endangered.health}}</p>
+            <p>Age:{{endangered.age}}</p>
         {{/each}}
     {{/if}}
 {{/partial}}
