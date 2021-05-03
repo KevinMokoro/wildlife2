@@ -9,6 +9,6 @@ import org.sql2o.*;
 
 
 public class DB {
-    public static Sql2o sql2o = new Sql2o("jdbc:postresql://ec2-54-87-112-29.compute-1.amazonaws.com:5432/d5gst20m7r64r", "zvvzlclxhjrsav", "6d5a385bf40690c6699909e3217b2a32f149d54e47d375b0aa49b48565804f19");
+    public static Sql2o sql2o = new Sql2o("jdbc:postresql://ec2-34-225-103-117.compute-1.amazonaws.com:5432/df5sg5ch5k2jrk", "ysrlzbfnjgqjbz", "57766f3caf31e493ed098fce572c7106520090fa37f84eefc55106e2857f72e2");
 }
 
