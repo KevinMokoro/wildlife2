@@ -90,7 +90,7 @@
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
 
-                    <appName> wildlife-moringa </appName>
+                    <appName> wildlife-animals </appName>
                     <processTypes>
                         <web>java -jar target/wildlife-animals-1.0-jar-with-dependencies.jar</web>
                     </processTypes>
