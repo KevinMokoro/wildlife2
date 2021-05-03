@@ -7,27 +7,15 @@
 </head>
 <body>
 <div class="navwild">
-<ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="/">Home</a></li>
-    <li role="presentation"><a href="/animals/new">Add a New Animal</a></li>
-
-    <li role="presentation" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            SIGHTINGS <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-            {{#if sightings}}
-                {{#each sightings}}
-                    <li><a href="/sightings/{{id}}">{{location}}</a></li>
-                {{/each}}
-                <li><a href="/sightings/new">Add Sighting</a></li>
-
-            {{else}}
-                <li><a href="/sightings/new">Add Sighting</a></li>
-            {{/if}}
-        </ul>
-    </li>
-</ul>
+<div class="nav nav-tabs">
+    <div class="dropdown">
+        <button class="dropbtn">MENU</button>
+        <div class="dropdown-content">
+            <a href="/">HOME</a>
+            <a href="/animal/new">ADD NEW ANIMAL</a>
+        </div>
+    </div>
+</div>
 </div>
 <div class="container">
 
@@ -47,10 +35,6 @@
     <footer class="footer">
         <div class="container">
             <hr>
-            <p class="text-muted">
-                <a href="/sightings/delete">delete all sightings and animals</a><br>
-                <a href="/animals/delete">delete all animals</a>
-            </p>
         </div>
     </footer>
     </body>

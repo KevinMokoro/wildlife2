@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="modules.EndangeredTest" time="1.646" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="modules.EndangeredTest" time="0.308" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/home/kevin/.sdkman/candidates/java/8.0.282.hs-adpt/jre/lib/amd64"/>
@@ -62,18 +62,14 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="modules.EndangeredTest" name="delete_deletesWaterMonster_true" time="0.085"/>
-  <testcase classname="modules.EndangeredTest" name="save_recordsTimeOfCreationInDatabase" time="0.067"/>
-  <testcase classname="modules.EndangeredTest" name="getAge_instantiatesWithAge_String" time="0.003"/>
-  <testcase classname="modules.EndangeredTest" name="save_savesSightingIntoDB_true" time="1.122"/>
-  <testcase classname="modules.EndangeredTest" name="getHealth_instantiatesWithHealth_String" time="0.005"/>
-  <testcase classname="modules.EndangeredTest" name="getSightingId_instantiatesWithSightingId_int" time="0.004"/>
-  <testcase classname="modules.EndangeredTest" name="equals_returnsTrueIfNameAndSightingIdAreSame_true" time="0.003"/>
-  <testcase classname="modules.EndangeredTest" name="all_returnsAllInstancesOfEndangered_true" time="0.059"/>
-  <testcase classname="modules.EndangeredTest" name="getName_instantiatesWithName_String" time="0.005"/>
-  <testcase classname="modules.EndangeredTest" name="save_savesSightingIdIntoDB_true" time="0.085"/>
-  <testcase classname="modules.EndangeredTest" name="save_returnsTrueIfObjectIsSame" time="0.045"/>
-  <testcase classname="modules.EndangeredTest" name="Endangered_instantiatesCorrectly_true" time="0.01"/>
-  <testcase classname="modules.EndangeredTest" name="save_assignsIdToEndangered" time="0.068"/>
-  <testcase classname="modules.EndangeredTest" name="find_returnsEndangeredWithSameId_otherEndangered" time="0.085"/>
+  <testcase classname="modules.EndangeredTest" name="delete_deletesEndangeredAnimal_true" time="0.051"/>
+  <testcase classname="modules.EndangeredTest" name="save_savesObjectsToDatabase_true" time="0.047"/>
+  <testcase classname="modules.EndangeredTest" name="getAge_instantiatesWithAge_String" time="0.004"/>
+  <testcase classname="modules.EndangeredTest" name="equals_returnsTrueIfObjectsSame_true" time="0.004"/>
+  <testcase classname="modules.EndangeredTest" name="getHealth_instantiatesWithHealth_String" time="0.004"/>
+  <testcase classname="modules.EndangeredTest" name="all_returnsAllInstancesOfEndangered_true" time="0.07"/>
+  <testcase classname="modules.EndangeredTest" name="getName_instantiatesWithName_String" time="0.003"/>
+  <testcase classname="modules.EndangeredTest" name="Endangered_instantiatesCorrectly_true" time="0.003"/>
+  <testcase classname="modules.EndangeredTest" name="save_assignsIdToEndangered" time="0.049"/>
+  <testcase classname="modules.EndangeredTest" name="find_returnsEndangeredWithSameId_otherEndangered" time="0.073"/>
 </testsuite>
