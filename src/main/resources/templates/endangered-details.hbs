@@ -1,0 +1,13 @@
+{{#partial "content"}}
+
+    <h1>NAME: {{endangered.name}}</h1>
+
+    {{#if endangered.getSightings}}
+        {{#each}}
+            <p>Location: {{location}}</p>
+            <p>RangerName: {{ranger_name}}</p>
+            <p>Health: {{health}}</p>
+            <p>Age:{{age}}</p>
+        {{/each}}
+    {{/if}}
+{{/partial}}

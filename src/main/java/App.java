@@ -104,6 +104,14 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
+        get("/endangered_animal/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            Endangered endangered = Endangered.find(Integer.parseInt(request.params("id")));
+            model.put("endangered", endangered);
+            return new ModelAndView(model, "endangered-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
 
 
 
