@@ -27,11 +27,6 @@ public class EndangeredTest {
         assertEquals("rhino", testEndangered.getName());
     }
 
-  //  @Test
-  //  public void getSightingId_instantiatesWithSightingId_int() {
-  //      Endangered testEndangered = setUpNewEndangered();
-  //      assertEquals(1,testEndangered.getSightingId());
-  ///  }
 
     @Test
     public void getHealth_instantiatesWithHealth_String() {
@@ -87,27 +82,7 @@ public class EndangeredTest {
         secondEndangered.save();
         assertEquals(Endangered.find(secondEndangered.getId()), secondEndangered);
     }
-  //  @Test
- //   public void save_savesSightingIdIntoDB_true() {
- //       Sighting testSighting = new Sighting("","");
-  //      testSighting.save();
-   //     Endangered testEndangered = new Endangered("lion", testSighting.getId(),"","");
-   //     testEndangered.save();
-       // Endangered savedEndangered = Endangered.find(testEndangered.getId());
- //       assertEquals(savedEndangered.getSightingId(), testSighting.getId());
-  //  }
 
-
-
-   // @Test
-   // public void save_recordsTimeOfCreationInDatabase() {
-  //      Endangered testEndangered = setUpNewEndangered();
-   //     testEndangered.save();
-    //    Timestamp savedEndangeredCreatedAt = Endangered.find(testEndangered.getId()).getCreatedAt();
-    //    Timestamp rightNow = new Timestamp(new Date().getTime());
-    //    assertEquals(rightNow.getDay(), savedEndangeredCreatedAt.getDay());
-  //.
-   // }
     @Test
     public void delete_deletesEndangeredAnimal_true() {
         Endangered testEndangered = setUpNewEndangered();

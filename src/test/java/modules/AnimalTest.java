@@ -71,18 +71,6 @@ public class AnimalTest {
     }
 
 
-
-
-
-  //  @Test
-  //  public void save_recordsTimeOfCreationInDatabase() {
-   //     Animal testAnimal = setUpNewAnimal();
-   //     testAnimal.save();
-  //      Timestamp savedAnimalCreatedAt = Animal.find(testAnimal.getId()).getCreatedAt();
-  //      Timestamp rightNow = new Timestamp(new Date().getTime());
-  //      assertEquals(rightNow.getDay(), savedAnimalCreatedAt.getDay());
-//    }
-
     @Test
     public void delete_deletesAnimalFromDatabase_true() {
         Animal testAnimal = setUpNewAnimal();
