@@ -98,9 +98,6 @@ public class Endangered extends Animals implements DatabaseManagement{
         }
     }
 
-
-
-
     public String getHealth() {
         return health;
     }
@@ -108,4 +105,6 @@ public class Endangered extends Animals implements DatabaseManagement{
     public String getAge() {
         return age;
     }
+
+
 }

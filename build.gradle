@@ -8,8 +8,8 @@ version '1.0-SNAPSHOT'
 
 mainClassName = 'App'
 sourceCompatibility = 1.8
-applicationName = 'wildlife-animals'
-archivesBaseName = 'wildlife-animals'
+applicationName = "wildlife-animals"
+archivesBaseName = "wildlife-animals"
 
 repositories {
     mavenCentral()
