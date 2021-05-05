@@ -14,13 +14,13 @@ It's An Application that allows rangers to sight animals, record their location 
 * JUnit
 
 ### SetUp link:
-Deployed to: [Heroku](enigmatic-ravine-48176.herokuapp.com/)
+Deployed to: [Heroku](enigmatic-ravine-48176.herokuapp.com/).
 Also you can,
 * Clone repository
 * Locally in PSQL setup the database as follows;
 
 * CREATE DATABASE wildlife_tracker;
-* Connect to the table : \c wildlife_tracker;
+* Connect to the database : \c wildlife_tracker;
 * Create the following tables in wildlife_tracker
 * CREATE TABLE endangered_animals (id serial PRIMARY KEY, name varchar, health varchar, age varchar);
 * CREATE TABLE sightings (id serial PRIMARY KEY, animal_id int, location varchar, ranger_name varchar);
